@@ -1,0 +1,12 @@
+{
+    "name": "aweika/laravel-ueditor",
+    "description": "ueditor for laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "aweika",
+            "email": "kller@foxmail.com"
+        }
+    ],
+    "require": {}
+}
