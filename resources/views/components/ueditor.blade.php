@@ -10,7 +10,7 @@
     {{--@push('scripts')--}}
         <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/ueditor.config.js')}}"></script>
         <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/ueditor.all.js')}}"></script>
-        <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/lang/zh-cn/zh-cn.js')}}"></script>
+        <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/lang/'.config('aweika-laravel-ueditor.locale').'/'.config('aweika-laravel-ueditor.locale').'.js')}}"></script>
     {{--@endpush--}}
 
     @php
@@ -30,7 +30,7 @@
                 wordCount:false,
                 elementPathEnabled:false,
                 toolbars: [
-                        ['source', 'undo', 'redo', 'bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'fullscreen']
+                        ['source', 'undo', 'redo', 'bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'simpleupload', 'fullscreen']
                     ]
             });
             ue_{{$config['field']}}.ready(function() {
