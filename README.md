@@ -1,5 +1,5 @@
 # laravel-ueditor
-ueditor for laravel
+ueditor for laravel 5.4
 
 ============================
 
@@ -10,13 +10,13 @@ ueditor for laravel
   composer require aweika/laravel-ueditor
   ```
 2. 在`config/app.php`中的`providers`的数组中添加
-    ```php
-    Aweika\LaravelUeditor\LaravelUeditorServiceProvider::class,
-    ```
-   在`config/app.php`中的`aliases`的数组中添加
-   ```php
-   'LaravelUeditor' => Aweika\LaravelUeditor\LaravelUeditor::class,
-   ```
+  ```php
+  Aweika\LaravelUeditor\LaravelUeditorServiceProvider::class,
+  ```
+  在`config/app.php`中的`aliases`的数组中添加
+  ```php
+  'LaravelUeditor' => Aweika\LaravelUeditor\LaravelUeditor::class,
+  ```
 3. 执行下面命令
   ```shell
   php artisan vendor:publish --provider="Aweika\LaravelUeditor\LaravelUeditorServiceProvider" --tag=first
@@ -24,13 +24,11 @@ ueditor for laravel
   会生成配置文件`config/aweika-laravel-ueditor.php`
   修改其中的`package_path`这个参数，配置ueditor的资源文件生成的目录。
   此参数相对于public目录，比如默认值为`aweika-larvel-ueditor`，则会将编辑器的资源文件生成到`public/aweika-laravel-ueditor`目录中。
-  
 4. 执行下面命令
   ```shell
   php artisan vendor:publish --provider="Aweika\LaravelUeditor\LaravelUeditorServiceProvider" --tag=second
   ```
   会按照上一步设置的路径生成资源文件和一个组件view。
-  
 5. 打开`routes/web.php`在适当的位置添加如下代码来设置编辑器上传相关操作所需要的路由。
   ```php
   \LaravelUeditor::routes();
@@ -41,13 +39,11 @@ ueditor for laravel
   @component('aweika-laravel-ueditor.components.ueditor', ['field'=>'element'])
   @endcomponent
   ```
-
   * 带默认值的调用
   ```php
   @component('aweika-laravel-ueditor.components.ueditor', ['field'=>'element', 'content'=>'default content'])
   @endcomponent
   ```
-
   * 带自定义脚本的调用
   ```php
   @php
