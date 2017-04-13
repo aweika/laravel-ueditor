@@ -1,6 +1,7 @@
 {
     "name": "aweika/laravel-ueditor",
     "description": "ueditor for laravel.",
+    "keywords": ["laravel", "ueditor"],
     "license": "MIT",
     "authors": [
         {
@@ -8,5 +9,14 @@
             "email": "kller@foxmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "laravel/framework": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aweika\\LaravelUeditor\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

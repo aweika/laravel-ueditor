@@ -20,11 +20,11 @@ class LaravelUeditorServiceProvider extends ServiceProvider
 
         $this->publishes([
                 __DIR__.'/../packages' => public_path(config('aweika-laravel-ueditor.package_path')),
-            ], 'two');
+            ], 'second');
 
         $this->publishes([
                 __DIR__.'/../resources/views/components' => resource_path('views/aweika-laravel-ueditor/components'),
-            ], 'two');
+            ], 'second');
     }
 
     /**
@@ -34,8 +34,6 @@ class LaravelUeditorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/ueditor.php', 'aweika-laravel-ueditor'
-        );
+        //
     }
 }

@@ -23,16 +23,18 @@
         {!! $config['custom_script'] !!}
     @else
         <script type="text/javascript">
-            var ue = UE.getEditor('{{$config['field']}}', {
+            var ue_{{$config['field']}} = UE.getEditor('{{$config['field']}}', {
                 initialFrameHeight:100,
+                autoHeightEnabled: false,
+                autoFloatEnabled: false,
                 wordCount:false,
                 elementPathEnabled:false,
                 toolbars: [
                         ['source', 'undo', 'redo', 'bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'fullscreen']
                     ]
             });
-            ue.ready(function() {
-                ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
+            ue_{{$config['field']}}.ready(function() {
+                ue_{{$config['field']}}.execCommand('serverparam', '_token', '{{ csrf_token() }}');
             });
         </script>
     @endif
