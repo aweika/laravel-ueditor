@@ -14,4 +14,8 @@ class LaravelUeditor
     public static function serverUrl(){
         return '/'.trim(config('aweika-laravel-ueditor.server_url'), '/');
     }
+
+    public static function component(){
+        return 'vendor.laravel-ueditor.ueditor';
+    }
 }

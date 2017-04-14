@@ -23,7 +23,7 @@ class LaravelUeditorServiceProvider extends ServiceProvider
             ], 'second');
 
         $this->publishes([
-                __DIR__.'/../resources/views/components' => resource_path('views/aweika-laravel-ueditor/components'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-ueditor'),
             ], 'second');
     }
 
