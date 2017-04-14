@@ -8,6 +8,10 @@ class LaravelUeditor
 {
     public static function routes()
     {
-        Route::any('ueditor/handle', '\Aweika\LaravelUeditor\HandleController@index');
+        Route::any(config('aweika-laravel-ueditor.server_url'), '\Aweika\LaravelUeditor\HandleController@index');
+    }
+
+    public static function serverUrl(){
+        return '/'.trim(config('aweika-laravel-ueditor.server_url'), '/');
     }
 }

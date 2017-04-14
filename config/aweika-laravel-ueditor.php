@@ -3,6 +3,7 @@ return [
     //编辑器资源包要生成的位置(相对于public目录)
     'package_path' => 'aweika-laravel-ueditor',
     'locale' => 'en',
+    'server_url' => 'ueditor/server',
     'upload' => [
         /* 上传图片配置项 */
         "imageActionName" => "uploadimage", /* 执行上传图片的action名称 */

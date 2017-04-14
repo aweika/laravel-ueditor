@@ -8,6 +8,7 @@
 
 @if(!config('aweika-laravel-ueditor-component-ueditor-used'))
     {{--@push('scripts')--}}
+        <script type="text/javascript">var AWEIKA_LARAVEL_UEDITOR_SERVER_URL = '{{\LaravelUeditor::serverUrl()}}';</script>
         <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/ueditor.config.js')}}"></script>
         <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/ueditor.all.js')}}"></script>
         <script src="{{asset(config('aweika-laravel-ueditor.package_path').'/lang/'.config('aweika-laravel-ueditor.locale').'/'.config('aweika-laravel-ueditor.locale').'.js')}}"></script>
