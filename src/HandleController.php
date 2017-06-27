@@ -16,7 +16,7 @@ class HandleController extends Controller
 
         switch ($action) {
             case 'config':
-                $result =  json_encode($CONFIG);
+                $result =  self::json_encode($CONFIG);
                 break;
 
             /* 上传图片 */
@@ -91,7 +91,7 @@ class HandleController extends Controller
                  */
 
                 /* 返回数据 */
-                $result = json_encode($up->getFileInfo());
+                $result = self::json_encode($up->getFileInfo());
 
                 //$result = include("action_upload.php");
                 break;
@@ -134,7 +134,7 @@ class HandleController extends Controller
                 $path = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "":"/") . $path;
                 $files = self::getfiles($path, $allowFiles);
                 if (!count($files)) {
-                    return json_encode(array(
+                    return self::json_encode(array(
                         "state" => "no match file",
                         "list" => array(),
                         "start" => $start,
@@ -153,7 +153,7 @@ class HandleController extends Controller
                 //}
 
                 /* 返回数据 */
-                $result = json_encode(array(
+                $result = self::json_encode(array(
                     "state" => "SUCCESS",
                     "list" => $list,
                     "start" => $start,
@@ -203,7 +203,7 @@ class HandleController extends Controller
                 }
 
                 /* 返回抓取数据 */
-                $result = json_encode(array(
+                $result = self::json_encode(array(
                     'state'=> count($list) ? 'SUCCESS':'ERROR',
                     'list'=> $list
                 ));
@@ -211,26 +211,28 @@ class HandleController extends Controller
                 break;
 
             default:
-                $result = json_encode(array(
+                $result = self::json_encode(array(
                     'state'=> '请求地址出错'
                 ));
                 break;
         }
 
         /* 输出结果 */
-        if (isset($_GET["callback"])) {
-            if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
-                echo htmlspecialchars($_GET["callback"]) . '(' . $result . ')';
-            } else {
-                echo json_encode(array(
-                    'state'=> 'callback参数不合法'
-                ));
-            }
-        } else {
-            echo $result;
-        }
+        return $result;
     }
 
+    public static function json_encode($result){
+        if (isset($_GET["callback"])) {
+            if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
+                return response()->json($result)->withCallback(request()->input('callback'));
+            } else {
+                $result = array(
+                    'state'=> 'callback参数不合法'
+                );
+            }
+        }
+        return response()->json($result);
+    }
 
     /**
      * 遍历获取目录下的指定类型的文件
