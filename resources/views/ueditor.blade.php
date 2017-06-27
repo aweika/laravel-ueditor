@@ -19,6 +19,14 @@
     @endphp
 @endif
 
+{{$slot}}
+
+@if(empty(trim($slot)))
+    <script id="{{$config['field']}}" name="{{$config['field']}}" type="text/plain">{!! $config['content'] !!}</script>
+@else
+    {{$slot}}
+@endif
+
 {{--@push('scripts')--}}
     @if(!empty($config['custom_script']))
         {!! $config['custom_script'] !!}
@@ -40,14 +48,6 @@
         </script>
     @endif
 {{--@endpush--}}
-
-{{$slot}}
-
-@if(empty(trim($slot)))
-    <script id="{{$config['field']}}" name="{{$config['field']}}" type="text/plain">{!! $config['content'] !!}</script>
-@else
-    {{$slot}}
-@endif
 
 {{--
 http://fex.baidu.com/ueditor/#start-config
